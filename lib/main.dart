@@ -92,11 +92,11 @@ class _LoginPageState extends State<LoginPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              'You have pushed the button this many times:',
+              'You have push the button this many times:',
             ),
             Text(
               '$_counter',
-              style: Theme.of(context).textTheme.display1,
+              style: Theme.of(context).textTheme.display2,
             ),
           ],
         ),
@@ -104,7 +104,7 @@ class _LoginPageState extends State<LoginPage> {
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
-        child: Icon(Icons.add),
+        child: Icon(Icons.add)
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
