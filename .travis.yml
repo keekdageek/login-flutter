@@ -4,12 +4,24 @@ addons:
   apt:
     packages:
       - lib32stdc++6
+# Inspired by: https://robertohuertas.com/2019/01/20/publish-flutter-package-with-travis/
 install:
-  - git clone https://github.com/flutter/flutter.git -b beta
-  - ./flutter/bin/flutter doctor
+  - echo 'Avoid default Travis CI install step' # this is to avoid an error with pub in Travis
+before_script:
+  - cd ..
+  - git clone https://github.com/flutter/flutter.git
+  - export PATH=`pwd`/flutter/bin:`pwd`/flutter/bin/cache/dart-sdk/bin:$PATH
+  - flutter doctor
 script:
-  - cd app
-  - ../flutter/bin/flutter test
+  - cd $TRAVIS_BUILD_DIR
+  - flutter $COMMAND
 cache:
   directories:
     - $HOME/.pub-cache
+
+matrix:
+  include:
+    - name: Test
+      env: COMMAND=test
+    - name: Analyze
+      env: COMMAND=analyze
