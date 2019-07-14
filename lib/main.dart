@@ -1,26 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
-void main() => runApp(Login());
+import 'no_content.dart';
+
+void main() {
+  runApp(Login());
+
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
+      statusBarColor: Colors.white,
+      systemNavigationBarColor: Colors.white,
+      systemNavigationBarDividerColor: Colors.black,
+      systemNavigationBarIconBrightness: Brightness.dark,
+    ),
+  );
+}
 
 class Login extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
+      title: 'Birb',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
+        brightness: Brightness.light,
+        primaryColor: Colors.white,
+        scaffoldBackgroundColor: Colors.white,
       ),
-      home: LoginPage(title: 'Flutter Demo Home Page'),
+      home: LoginPage(title: 'Birb'),
     );
   }
 }
@@ -67,10 +75,16 @@ class _LoginPageState extends State<LoginPage> {
     // than having to individually change instances of widgets.
     return Scaffold(
       appBar: AppBar(
-        // Here we take the value from the LoginPage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
+        title: Center(
+          child: Text(widget.title),
+        ),
+        elevation: 0.0,
       ),
+//      appBar: AppBar(
+//        // Here we take the value from the LoginPage object that was created by
+//        // the App.build method, and use it to set our appbar title.
+//        title: Text(widget.title),
+//      ),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
@@ -91,21 +105,16 @@ class _LoginPageState extends State<LoginPage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              'You have push the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.display2,
-            ),
+            NoContent(),
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add)
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      )
+//      floatingActionButton: FloatingActionButton(
+//        onPressed: _incrementCounter,
+//        tooltip: 'Increment',
+//        child: Icon(Icons.add)
+//      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
+
