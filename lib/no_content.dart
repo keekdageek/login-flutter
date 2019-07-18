@@ -15,7 +15,7 @@ class NoContent extends StatelessWidget {
             'assets/undraw_a_day_at_the_park_owg1.svg',
             height: 300.0,
           ),
-          const Text('No Birbs a birbin')
+          const Text('No Birbs a birbing')
         ],
       ),
     );
