@@ -9,19 +9,20 @@ install:
   - echo 'Avoid default Travis CI install step' # this is to avoid an error with pub in Travis
 before_script:
   - cd ..
-  - git clone https://github.com/flutter/flutter.git
+  - git clone https://github.com/flutter/flutter.git --branch v1.5.4-hotfix.2  --single-branch
   - export PATH=`pwd`/flutter/bin:`pwd`/flutter/bin/cache/dart-sdk/bin:$PATH
   - flutter doctor
 script:
   - cd $TRAVIS_BUILD_DIR
-  - flutter $COMMAND
+  - flutter test
+#  - flutter analyze
 cache:
   directories:
     - $HOME/.pub-cache
 
-matrix:
-  include:
-    - name: Test
-      env: COMMAND=test
-    - name: Analyze
-      env: COMMAND=analyze
+#matrix:
+#  include:
+#    - name: Test
+#      env: COMMAND=test
+#    - name: Analyze
+#      env: COMMAND=analyze
